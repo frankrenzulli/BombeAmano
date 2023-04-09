@@ -90,7 +90,6 @@ public class P1Movement : MonoBehaviour
     private void SetDirection(Vector2 newDirection)
     {
         direction = newDirection;
-
     }
 
 }
