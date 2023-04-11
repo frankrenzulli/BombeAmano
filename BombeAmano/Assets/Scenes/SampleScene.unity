@@ -297,9 +297,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bombPrefab: {fileID: 3144428891160803937, guid: 53ca2e4fdf3a9cd48be4c7e15c87a2e6, type: 3}
-  bombActivatingTime: 3
+  bombActivatingTime: 1
   bombsAmount: 2
   explosionPrefab: {fileID: 4138227732932517319, guid: 6f9af8f388988834f967c468734f25e5, type: 3}
+  explosionLayerMask:
+    serializedVersion: 2
+    m_Bits: 64
   explosionDuration: 1
   explosionRadius: 3
 --- !u!1 &519420028
@@ -398,7 +401,7 @@ GameObject:
   - component: {fileID: 1451888663}
   - component: {fileID: 1451888662}
   - component: {fileID: 1451888664}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Indistructible
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2817,7 +2820,7 @@ GameObject:
   - component: {fileID: 1537459271}
   - component: {fileID: 1537459270}
   - component: {fileID: 1537459272}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Distructible
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3816,7 +3819,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1669960927}
   - component: {fileID: 1669960926}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Grid
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3918,6 +3921,10 @@ PrefabInstance:
     - target: {fileID: 7011833394627009800, guid: 6f9af8f388988834f967c468734f25e5, type: 3}
       propertyPath: m_Name
       value: Explosion
+      objectReference: {fileID: 0}
+    - target: {fileID: 7011833394627009800, guid: 6f9af8f388988834f967c468734f25e5, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6f9af8f388988834f967c468734f25e5, type: 3}
