@@ -3,6 +3,7 @@ using System.Collections;
 
 public class Enemy : MonoBehaviour
 {
+    GameManager gm;
     public float moveTime = 0.5f; // Tempo di movimento del nemico
     public LayerMask blockingLayer; // Layer che blocca il movimento del nemico
 
@@ -12,6 +13,7 @@ public class Enemy : MonoBehaviour
 
     void Start()
     {
+        gm = FindObjectOfType<GameManager>();
         target = GetComponent<Transform>(); // Ottiene il Transform del nemico
     }
 
@@ -33,7 +35,16 @@ public class Enemy : MonoBehaviour
                 StartCoroutine(SmoothMovement(targetPosition));
             }
         }
+
     }
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.tag == "Explosion")
+        {
+            gameObject.SetActive(false);
+        }
+    }
+
 
     IEnumerator SmoothMovement(Vector3 end)
     {
@@ -51,4 +62,5 @@ public class Enemy : MonoBehaviour
 
         isMoving = false;
     }
+    
 }

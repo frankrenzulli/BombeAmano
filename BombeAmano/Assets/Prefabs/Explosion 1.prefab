@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 4515167466481796202}
   - component: {fileID: 4934331433327155998}
   - component: {fileID: 7573407562368421968}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: StartAnimation
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -118,7 +118,7 @@ GameObject:
   - component: {fileID: 7459377508479670042}
   - component: {fileID: 816497310945185317}
   - component: {fileID: 4466268673366380499}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: EndAnimation
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -225,9 +225,9 @@ GameObject:
   - component: {fileID: 5288934540849395980}
   - component: {fileID: 8792057489104123233}
   - component: {fileID: 4138227732932517319}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Explosion 1
-  m_TagString: Untagged
+  m_TagString: Explosion
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -274,7 +274,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.7, y: 0.7}
+  m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
 --- !u!114 &4138227732932517319
 MonoBehaviour:
@@ -302,7 +302,7 @@ GameObject:
   - component: {fileID: 4986008760410438890}
   - component: {fileID: 2404649615567088442}
   - component: {fileID: 736789536527216431}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: MiddleAnimation
   m_TagString: Untagged
   m_Icon: {fileID: 0}

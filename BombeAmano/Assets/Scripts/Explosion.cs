@@ -1,6 +1,5 @@
 using System.Collections;
 using System.Collections.Generic;
-using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 
 public class Explosion : MonoBehaviour
@@ -53,5 +52,13 @@ public class Explosion : MonoBehaviour
         Destroy(gameObject, time);
     }
 
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+            if (other.CompareTag("Enemy"))
+            {
+                // Se sì, distruggi l'oggetto a cui è attaccato lo script
+                Destroy(other.gameObject);
+            }
+        }
+    }
 
-}

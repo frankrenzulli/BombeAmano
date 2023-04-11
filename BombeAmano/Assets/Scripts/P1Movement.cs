@@ -8,12 +8,14 @@ public class P1Movement : MonoBehaviour
     public Rigidbody2D rb;
     private Vector2 direction = Vector2.down;
     public float speed = 5f;
-    
+
+    GameManager gm;
 
     public Animator anim;
 
     private void Awake()
     {
+        gm = FindObjectOfType<GameManager>();
         anim = GetComponent<Animator>();
         rb = GetComponent<Rigidbody2D>();
     }
@@ -76,6 +78,10 @@ public class P1Movement : MonoBehaviour
 
         }
 
+        if(gm.player1Lives <= 0)
+        {
+            gm.isGameOver();
+        }
     }
 
     private void FixedUpdate()
@@ -99,5 +105,19 @@ public class P1Movement : MonoBehaviour
     public float GetSpeed()
     {
         return speed;
+    }
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if(collision.gameObject.layer == LayerMask.NameToLayer("Explosion") || collision.gameObject.layer == LayerMask.NameToLayer("Enemy"))
+        {
+            gm.player1Lives--;
+            gameObject.transform.position = new Vector2(-7, 6.3f);
+        }
+    }
+    private void Death()
+    {
+        enabled = false;
+        GetComponent<BombPlacerScript>().enabled = false;
+
     }
 }
