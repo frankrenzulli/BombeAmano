@@ -92,4 +92,12 @@ public class P1Movement : MonoBehaviour
         direction = newDirection;
     }
 
+    public void SetSpeed(float newSpeed)
+    {
+        speed = newSpeed;
+    }
+    public float GetSpeed()
+    {
+        return speed;
+    }
 }

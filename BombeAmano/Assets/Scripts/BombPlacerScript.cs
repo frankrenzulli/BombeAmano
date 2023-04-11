@@ -1,5 +1,6 @@
 using System.Collections;
 using UnityEngine;
+using UnityEngine.Tilemaps;
 using UnityEngine.UIElements;
 
 public class BombPlacerScript : MonoBehaviour
@@ -16,6 +17,7 @@ public class BombPlacerScript : MonoBehaviour
     public float explosionDuration = 1f;
     public int explosionRadius = 1;
 
+    public Tilemap destructibleTiles;
     private void OnEnable()
     {
         bombsRemaining = bombsAmount;
@@ -78,6 +80,7 @@ public class BombPlacerScript : MonoBehaviour
 
         if(Physics2D.OverlapBox(position, Vector2.one / 2f, 0f, explosionLayerMask))
         {
+            ClearDestructibles(position);
             return;
         }
 
@@ -95,5 +98,22 @@ public class BombPlacerScript : MonoBehaviour
         explosion.DestroyTime(explosionDuration);
 
         Explode(position, direction, ExplosionRadius - 1);
+    }
+    public void AddBomb()
+    {
+        bombsAmount++;
+        bombsRemaining++;
+    }
+
+    private void ClearDestructibles(Vector2 position)
+    {
+
+        Vector3Int cell = destructibleTiles.WorldToCell(position);
+        TileBase tile = destructibleTiles.GetTile(cell);
+        if (tile != null)
+        {
+            destructibleTiles.SetTile(cell, null);
+        }
+
     }
 }
