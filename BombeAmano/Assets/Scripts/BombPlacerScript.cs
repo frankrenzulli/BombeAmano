@@ -1,12 +1,19 @@
 using System.Collections;
 using UnityEngine;
+using UnityEngine.UIElements;
 
 public class BombPlacerScript : MonoBehaviour
 {
+    [Header("Bombs")]
     public GameObject bombPrefab;
     public float bombActivatingTime = 3f;
     public int bombsAmount = 1;
     private int bombsRemaining;
+
+    [Header("Explosion")]
+    public Explosion explosionPrefab;
+    public float explosionDuration = 1f;
+    public int explosionRadius = 1;
 
     private void OnEnable()
     {
@@ -31,6 +38,19 @@ public class BombPlacerScript : MonoBehaviour
 
         yield return new WaitForSeconds(bombActivatingTime);
 
+        position = bomb.transform.position;
+        position.x = Mathf.Round(position.x);
+        position.y = Mathf.Round(position.y);
+
+        Explosion explosion = Instantiate(explosionPrefab, position, Quaternion.identity);
+        explosion.SetActiveRenderer(explosion.startAnim);
+        explosion.DestroyTime(explosionDuration);
+
+        Explode(position, Vector2.up ,explosionRadius);
+        Explode(position, Vector2.down, explosionRadius);
+        Explode(position, Vector2.left, explosionRadius);
+        Explode(position, Vector2.right, explosionRadius);
+
         Destroy(bomb);
         bombsRemaining++;
     }
@@ -43,5 +63,31 @@ public class BombPlacerScript : MonoBehaviour
             collision.isTrigger = false;
         }
 
+    }
+
+    private void Explode(Vector2 position, Vector2 direction, int ExplosionRadius /*lunghezza esplosione*/)
+    {
+        //esce dalla funzione quando il raggio dell'esplosione è uguale a 0
+        if(ExplosionRadius <= 0)
+        {
+            return;
+        }
+
+        position += direction;
+
+        Explosion explosion = Instantiate(explosionPrefab, position, Quaternion.identity);
+
+        if (ExplosionRadius > 1)
+        {
+            explosion.SetActiveRenderer(explosion.middleAnim);
+        }
+        else
+        {
+            explosion.SetActiveRenderer(explosion.endAnim);
+        }
+        explosion.SetDirection(direction);
+        explosion.DestroyTime(explosionDuration);
+
+        Explode(position, direction, ExplosionRadius - 1);
     }
 }
