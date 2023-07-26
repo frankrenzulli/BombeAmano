@@ -8,6 +8,7 @@ TagManager:
   - Obstacles
   - Explosion
   - Enemy
+  - Explosion2
   layers:
   - Default
   - TransparentFX

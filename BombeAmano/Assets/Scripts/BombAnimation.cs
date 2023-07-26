@@ -6,6 +6,7 @@ public class BombAnimation : MonoBehaviour
 {
 
     private SpriteRenderer spriteRenderer;
+    private CircleCollider2D cirlceCollider;
 
     [Tooltip("Sprite iniziale dal quale far iniziare l'animazione")]
     public Sprite firstSprite;
@@ -19,11 +20,13 @@ public class BombAnimation : MonoBehaviour
     private void Awake()
     {
         spriteRenderer = GetComponent<SpriteRenderer>();
+        cirlceCollider = GetComponent<CircleCollider2D>();
     }
 
     private void OnEnable()
     {
         spriteRenderer.enabled = true;
+        cirlceCollider.enabled = true;
     }
 
     private void OnDisable()
