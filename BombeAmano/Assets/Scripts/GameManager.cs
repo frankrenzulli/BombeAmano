@@ -1,25 +1,35 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
-    public int player1Lives = 3;
-
+    public int playerLives = 3;
+    public GameObject winLossScreen;
+    public TextMeshProUGUI winlossText;
     
 
     public void player1Hit()
     {
-        player1Lives--;
+        playerLives--;
     }
 
     public void isGameOver()
     {
-        if(player1Lives <= 0)
+        if(playerLives <= 0)
         {
-            Debug.Log("Player 1 vince");
+            winLossScreen.SetActive(true);
+            winlossText.text = "Hai Perso!";
+            Time.timeScale = 0f;
         }
     }
 
+    public void Win()
+    {
+        winLossScreen.SetActive(true);
+        winlossText.text = "Hai Vinto!!";
+        Time.timeScale= 0f;
+    }
 
 }

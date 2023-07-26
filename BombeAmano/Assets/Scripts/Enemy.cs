@@ -9,11 +9,17 @@ public class Enemy : MonoBehaviour
 
 
     private bool isMoving; 
-    private Vector2[] directions = new Vector2[] { Vector2.up, Vector2.down, Vector2.left, Vector2.right }; 
+    private Vector2[] directions = new Vector2[] { Vector2.up, Vector2.down, Vector2.left, Vector2.right };
 
     void Start()
     {
         gm = FindObjectOfType<GameManager>();
+
+        // Ottieni il riferimento all'EnemyManager
+        EnemyManager enemyManager = FindObjectOfType<EnemyManager>();
+
+        // Aggiungi te stesso alla lista dell'EnemyManager
+        enemyManager.enemyList.Add(this.gameObject);
     }
 
     void Update()
@@ -56,6 +62,10 @@ public class Enemy : MonoBehaviour
     {
         if (other.CompareTag("Explosion2"))
         {
+            // Rimuovi te stesso dalla lista dell'EnemyManager
+            EnemyManager enemyManager = FindObjectOfType<EnemyManager>();
+            enemyManager.enemyList.Remove(this.gameObject);
+
             Debug.Log("Ok");
             Destroy(gameObject);
         }

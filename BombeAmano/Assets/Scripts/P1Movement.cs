@@ -78,7 +78,7 @@ public class P1Movement : MonoBehaviour
 
         }
 
-        if(gm.player1Lives <= 0)
+        if(gm.playerLives <= 0)
         {
             gm.isGameOver();
         }
@@ -110,7 +110,7 @@ public class P1Movement : MonoBehaviour
     {
         if(collision.gameObject.layer == LayerMask.NameToLayer("Explosion") || collision.gameObject.layer == LayerMask.NameToLayer("Enemy"))
         {
-            gm.player1Lives--;
+            gm.playerLives--;
             gameObject.transform.position = new Vector2(-7, 6.3f);
         }
     }
